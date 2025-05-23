@@ -34,7 +34,7 @@ default:
 	mkdir -p .state
 	touch .state/check-uv
 
-.state/deps-install-with-uv: uv.lock pyproject.toml mkdocs.yml 
+.state/deps-install-with-uv: .state/check-uv uv.lock pyproject.toml mkdocs.yml 
 	# Synchronize the dependencies with the ones in the virtual environment
 	uv sync
 
