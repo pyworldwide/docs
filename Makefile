@@ -67,4 +67,4 @@ clean:
 	rm -rf .cache
 
 
-.PHONY: serve build requirements clear cleanfeat: Added Makefile to easily run the project
+.PHONY: serve build requirements clear clean
