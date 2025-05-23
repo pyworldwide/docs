@@ -14,7 +14,7 @@ default:
 	@exit 1
 
 .state/check-uv:
-	# Check if the uv command is available, if not, prompt to install
+	@# Check if the uv command is available, if not, prompt to install
 	@if ! command -v uv >/dev/null 2>&1; then \
 		echo "uv is not installed."; \
 		echo "Do you want to install uv https://docs.astral.sh/uv/ ? (y/n): "; \
@@ -31,41 +31,46 @@ default:
 		fi; \
 	fi; \
 
-	# Mark the state so we don't rebuild this needlessly.
+	@# Mark the state so we don't rebuild this needlessly.
 	mkdir -p .state
 	touch .state/check-uv
 
 .state/deps-install-with-uv: .state/check-uv uv.lock pyproject.toml mkdocs.yml 
-	# Synchronize the dependencies with the ones in the virtual environment
+	@# Synchronize the dependencies with the ones in the virtual environment
 	uv sync
 
-	# Mark the state so we don't rebuild this needlessly.
+	@# Mark the state so we don't rebuild this needlessly.
 	mkdir -p .state
 	touch .state/deps-install-with-uv
 
 serve: .state/deps-install-with-uv
-	# Start the server
+	@# Start the server
+	@echo "Starting the server..."
+	@echo "You can access the site at http://localhost:8000"
 	uv run mkdocs serve
 
 build: .state/deps-install-with-uv
-	# Build the site
+	@# Build the site
+	@echo "Building the site..."
 	uv run mkdocs build
 
 requirements: .state/deps-install-with-uv
-	# Generate the requirements file
+	@# Generate the requirements file
+	@echo "Generating the requirements file..."
 	uv export --format requirements.txt > requirements.txt
 
-clear:
-	# Clear the site
+build-clean:
+	@# Clear the build artifacts if exists.
+	@echo "Cleaning the build artifacts..."
 	rm -rf site
 
-clean:
-	# Clear all the stuff
-	rm -rf site
+cache-clean:
+	@# Clear all the stuff
+	@echo "Cleaning all the cache..."
 	rm -rf .state
 	rm -rf .venv
 	rm -rf .mypy_cache
 	rm -rf .cache
 
 
-.PHONY: serve build requirements clear clean
+.PHONY: serve build requirements build-clean cache-clean
