@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
 site_name: PyWorldWide Docs
 site_url: https://docs.pyworldwide.org
+site_description: "Documentation for PyWorldWide Volunteers on the meetup organization"
 theme:
   name: material
   logo: assets/pyworldwide-logo.png
@@ -79,6 +80,42 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/pyworldwide/docs
       name: Contribute to our repository
+  social_card:
+    size:
+      width: 1200
+      height: 630
+    colors:
+      primary: "#4051b5"
+      accent: "#e91e63"
+      background: "#4051b5ee"
+      text: "#ffffff"
+    layouts:
+      - background:
+          color: "#4051b5ee"
+      - logo:
+          image: assets/pyworldwide-logo.png
+          position: "top left"
+          width: 160
+          height: 160
+      - title:
+          text: "PyWorldWide Volunteer Docs"
+          color: "#ffffff"
+          font: "Fira Sans"
+          size: 64
+          weight: 700
+          wrap: true
+      - subtitle:
+          text: "Build, Contribute, Learn Together"
+          color: "#ff80ab"
+          font: "Fira Sans"
+          size: 36
+          weight: 400
+      - author:
+          text: "by PyWorldWide Community"
+          color: "#d1c4e9"
+          font: "Fira Mono"
+          size: 24
+          position: "bottom right"
 plugins:
   - social
   - tags
