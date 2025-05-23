@@ -19,11 +19,14 @@ default:
 	# Check if the uv command is available, if not, prompt to install
 	@if ! command -v uv >/dev/null 2>&1; then \
 		echo "uv is not installed."; \
-		echo "Do you want to install uv? (y/n): "; \
+		echo "Do you want to install uv https://docs.astral.sh/uv/ ? (y/n): "; \
 		read answer; \
 		if [ "$$answer" = "y" ]; then \
 			echo "Installing uv..."; \
 			curl -LsSf https://astral.sh/uv/install.sh | sh; \
+			@echo "uv installed successfully."; \
+			@echo "Please restart your terminal and then continue."; \
+			exit 0; \
 		else \
 			echo "uv installation skipped. Exiting..."; \
 			exit 1; \
