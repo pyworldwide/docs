@@ -26,7 +26,7 @@ default:
 			curl -LsSf https://astral.sh/uv/install.sh | sh; \
 			@echo "uv installed successfully."; \
 			@echo "Please restart your terminal and then continue."; \
-			exit 0; \
+			exit 1; \
 		else \
 			echo "uv installation skipped. Exiting..."; \
 			exit 1; \
