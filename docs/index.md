@@ -1,5 +1,7 @@
 # PyWorldWide meetup organization Documentation and Guidelines
 
+![PyWorldWide Logo without BG](./assets/pyworldwide-logo.png)
+
 Documentation for PyWorldWide Voluntters with the procedure and guidelines to organize PyWorldWide Meetup.
 
 ## 🐍 About [PyWorldWide](https://pyworldwide.org)
