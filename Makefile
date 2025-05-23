@@ -13,8 +13,6 @@ default:
 	@echo
 	@exit 1
 
-
-
 .state/check-uv:
 	# Check if the uv command is available, if not, prompt to install
 	@if ! command -v uv >/dev/null 2>&1; then \
@@ -24,14 +22,14 @@ default:
 		if [ "$$answer" = "y" ]; then \
 			echo "Installing uv..."; \
 			curl -LsSf https://astral.sh/uv/install.sh | sh; \
-			@echo "uv installed successfully."; \
-			@echo "Please restart your terminal and then continue."; \
+			echo "uv installed successfully."; \
+			echo "Please restart your terminal and then continue."; \
 			exit 1; \
 		else \
 			echo "uv installation skipped. Exiting..."; \
 			exit 1; \
-		fi \
-	fi
+		fi; \
+	fi; \
 
 	# Mark the state so we don't rebuild this needlessly.
 	mkdir -p .state
